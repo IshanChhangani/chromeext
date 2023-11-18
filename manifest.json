@@ -1,0 +1,35 @@
+{
+    "manifest_version": 3,
+    "name": "Keep Blocking",
+    "version": "1.0",
+    "description": "Block Channels from YouTube search results",
+    "permissions": ["webRequest","activeTab"],
+    "action": {
+      "default_icon": {
+        "16": "images/icon16.png",
+        "48": "images/icon48.png",
+        "512": "images/icon128.png"
+      },
+      "default_title": "Block the youtube channels",
+      "default_popup": "popup.html"
+    },
+    "content_scripts": [
+      {
+        "matches": ["https://m.youtube.com/*"],
+        "js": ["youtubeMobileContentScript.js"]
+      },
+      {
+        "matches": ["https://www.youtube.com/*"],
+        "js": ["youtubeContentScript.js"]
+      },
+      {
+        "matches": ["*://www.google.com/*" , "*://www.google.co.in/*"],
+        "js": ["googleContentScript.js"]
+      }
+    ],
+    "host_permissions": [
+        "https://www.youtube.com/",
+        "https://www.google.com/"
+    ]
+  }
+  
